@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  api:
+    build: .
+    depends_on:
+      - mongo
+    restart: always
+    container_name: sinantica_api
+    ports:
+      - 8000:8081
+    environment:
+      HOST: "0.0.0.0"
+      PORT: 8081
+      DB_USER: sinantica
+      DB_PASSWORD: sinantica
+      DATABASE_URL: mongodb://sinantica:sinantica@mongo:27017/admin
+  mongo:
+    image: mongo
+    container_name: sinantica_db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sinantica
+      MONGO_INITDB_ROOT_PASSWORD: sinantica
+      # MONGODB_ADMIN_USER: sinantica
+      # MONGODB_ADMIN_PASSWORD: sinantica
+      # MONGODB_DATABASE: admin
+      # MONGODB_USERNAME: sinantica
+      # MONGODB_PASSWORD: sinantica
+
+
+  mongo-express:
+    image: mongo-express
+    container_name: sinantica_mongoexpress
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: sinantica
+      ME_CONFIG_MONGODB_ADMINPASSWORD: sinantica
+      ME_CONFIG_BASICAUTH_USERNAME: sinantica
+      ME_CONFIG_BASICAUTH_PASSWORD: sin4ntic4sp4
