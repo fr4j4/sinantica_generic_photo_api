@@ -27,5 +27,7 @@ Parámetros de la solicitud HTTP:
 - **foto_password:** Hash de encriptación de la fotografía
 - **foto_id:** Id de la fotografía almacenada en la base de datos
 
+Se retorna directamente el string base64 de la imagen desencriptada.
+
 # Almacenamiento de Hashes de encriptación e id's de fotografías
 Es importante aclarar que los hashes de encriptación e id's de fotografías deben ser almacenados por la entidad que se conecte a esta API, esta api sólo almacena las fotografías encriptadas y si por algún motivo se pierde el hash de encriptación quedará inservible. Al igual para la id de la fotografía, la API no almacena ninguna relación de la ID de las fotografías guardadas con otros datos, como por ejemplo, id de usuarios. 
